@@ -35,6 +35,14 @@ module.exports = {
     useNullAsDefault: true,
   },
 
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: Helpers.databasePath('testing.sqlite'),
+    },
+    useNullAsDefault: true,
+  },
+
   /*
   |--------------------------------------------------------------------------
   | Mysql
