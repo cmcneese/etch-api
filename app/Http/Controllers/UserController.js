@@ -3,16 +3,14 @@
 const User = use('App/Model/User');
 
 const Hash = use('Hash');
-<<<<<<< HEAD
-const attributes = ['email', 'password', 'username'];
-=======
-const attributes = ['email', 'password', 'password-confirmation'];
->>>>>>> 40bcae4c08cf516ab32afa5ab310dbc1de6c4e11
+const attributes = ['email', 'password', 'username', 'password-confirmation', 'name'];
 
 class UserController {
 
   get createRules() {
     return {
+      name: 'required',
+      username: 'required',
       email: 'required|email|unique:users',
       password: 'required|confirmed',
     };
@@ -25,6 +23,10 @@ class UserController {
   }
 
   * index(request, response) {
+    if (request.input('current')) {
+      return response.jsonApi('User', request.authUser);
+    }
+
     const users = yield User.with().fetch();
 
     response.jsonApi('User', users);
