@@ -5,6 +5,7 @@ const User = use('App/Model/User');
 const Hash = use('Hash');
 const attributes = ['email', 'password', 'username', 'password-confirmation', 'name'];
 
+
 class UserController {
 
   get createRules() {
