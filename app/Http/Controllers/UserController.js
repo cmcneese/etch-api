@@ -5,6 +5,7 @@ const snakeCaseKeys = require('snakecase-keys');
 const User = use('App/Model/User');
 
 const Hash = use('Hash');
+const File = use('File');
 const attributes = ['email', 'password', 'username', 'password-confirmation', 'name'];
 
 
