@@ -24,3 +24,5 @@ Route.resource('/api/users', 'UserController')
   .middleware('auth');
 
 Route.post('/api/token-auth', 'SessionController.store');
+
+Route.resource('/api/memories', 'MemoryController').except(['create', 'edit']);
