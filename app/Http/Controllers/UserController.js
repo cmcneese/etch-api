@@ -27,10 +27,14 @@ class UserController {
 
   * index(request, response) {
     if (request.input('current')) {
-      return response.jsonApi('User', request.authUser);
+      const user = request.authUser;
+
+      yield user.related('memories').load();
+
+      return response.jsonApi('User', user);
     }
 
-    const users = yield User.with().fetch();
+    const users = yield User.with('memories').fetch();
 
     response.jsonApi('User', users);
   }
@@ -50,7 +54,7 @@ class UserController {
 
   * show(request, response) {
     const id = request.param('id');
-    const user = yield User.with().where({ id }).firstOrFail();
+    const user = yield User.with('memories').where({ id }).firstOrFail();
 
     response.jsonApi('User', user);
   }
@@ -62,7 +66,7 @@ class UserController {
     });
 
     const id = request.param('id');
-    const user = yield User.with().where({ id }).firstOrFail();
+    const user = yield User.with('memories').where({ id }).firstOrFail();
 
     if (profilePic && profilePic.exists()) {
       const attrs = snakeCaseKeys(request.all());

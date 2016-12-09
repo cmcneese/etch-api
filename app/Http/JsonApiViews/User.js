@@ -5,6 +5,13 @@ class User extends JsonApiView {
     return ['email', 'username', 'name'];
   }
 
+  memories() {
+    return this.hasMany('App/Http/JsonApiViews/Memory', {
+      included: true,
+      excludeRelation: 'user',
+    });
+  }
+
 }
 
 module.exports = User;
