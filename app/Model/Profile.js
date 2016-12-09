@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 
-const Lucid = use('Lucid')
+const Lucid = use('Lucid');
 
 class Profile extends Lucid {
 
 
 }
 
-module.exports = Profile
+module.exports = Profile;
