@@ -9,6 +9,10 @@ class User extends Lucid {
     return this.hasMany('App/Model/Token');
   }
 
+  memories() {
+    return this.hasMany('App/Model/Memory');
+  }
+
   static get unguarded() {
     return false;
   }

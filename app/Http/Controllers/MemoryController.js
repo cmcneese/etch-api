@@ -1,14 +1,27 @@
 'use strict';
 
 const Memory = use('App/Model/Memory');
-const attributes = ['track-id', 'emoji', 'text', 'date'];
+const Spotify = make('App/Spotify');
+const attributes = ['track-id', 'emoji', 'text', 'date', 'lat', 'lng'];
 
 class MemoryController {
 
-  * index(request, response) {
-    const memories = yield Memory.with('user').fetch();
+  * addTrackInfo(memory) {
+    const track = yield Spotify.find(memory.track_id);
 
-    response.jsonApi('Memory', memories);
+    return Object.assign({}, memory, { track });
+  }
+
+  * index(request, response) {
+    let query = Memory.with('user');
+
+    if (request.input('limit')) {
+      query = query.limit(request.input('limit'));
+    }
+
+    const memories = yield query.fetch();
+
+    response.jsonApi('Memory', yield memories.toJSON().map(this.addTrackInfo));
   }
 
   * store(request, response) {
@@ -18,14 +31,14 @@ class MemoryController {
     };
     const memory = yield Memory.create(Object.assign({}, input, foreignKeys));
 
-    response.jsonApi('Memory', memory);
+    response.jsonApi('Memory', yield this.addTrackInfo(memory.toJSON()));
   }
 
   * show(request, response) {
     const id = request.param('id');
     const memory = yield Memory.with('user').where({ id }).firstOrFail();
 
-    response.jsonApi('Memory', memory);
+    response.jsonApi('Memory', yield this.addTrackInfo(memory.toJSON()));
   }
 
   * update(request, response) {
@@ -41,7 +54,7 @@ class MemoryController {
     memory.fill(Object.assign({}, input, foreignKeys));
     yield memory.save();
 
-    response.jsonApi('Memory', memory);
+    response.jsonApi('Memory', yield this.addTrackInfo(memory.toJSON()));
   }
 
   * destroy(request, response) {
