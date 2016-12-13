@@ -6,7 +6,13 @@ const attributes = ['track-id', 'emoji', 'text', 'date', 'lat', 'lng'];
 class MemoryController {
 
   * index(request, response) {
-    const memories = yield Memory.with('user').fetch();
+    let query = Memory.with('user');
+
+    if (request.input('limit')) {
+      query = query.limit(request.input('limit'));
+    }
+
+    const memories = yield query.fetch();
 
     response.jsonApi('Memory', memories);
   }
