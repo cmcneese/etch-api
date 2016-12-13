@@ -2,7 +2,7 @@
 
 const Memory = use('App/Model/Memory');
 const Spotify = make('App/Spotify');
-const attributes = ['track-id', 'emoji', 'text', 'date'];
+const attributes = ['track-id', 'emoji', 'text', 'date', 'lat', 'lng'];
 
 class MemoryController {
 
