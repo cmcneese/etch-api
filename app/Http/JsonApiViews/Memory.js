@@ -12,6 +12,13 @@ class Memory extends JsonApiView {
     });
   }
 
+  track() {
+    return this.belongsTo('App/Http/JsonApiViews/Track', {
+      included: true,
+      excludeRelation: 'memories',
+    });
+  }
+
 }
 
 module.exports = Memory;

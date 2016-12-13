@@ -7,7 +7,7 @@ class User extends JsonApiView {
 
   memories() {
     return this.hasMany('App/Http/JsonApiViews/Memory', {
-      included: true,
+      included: false,
       excludeRelation: 'user',
     });
   }
