@@ -33,6 +33,9 @@ const providers = [
 
   'adonis-validation-provider/providers/ValidatorProvider',
   'adonis-filesystem/providers/FilesystemProvider',
+
+  'adonis-redis/providers/RedisFactoryProvider',
+  'adonis-redis/providers/RedisProvider',
 ];
 
 /*
@@ -83,6 +86,8 @@ const aliases = {
 
   Validator: 'Adonis/Addons/Validator',
   File: 'AdonisFilesystem/Filesystem',
+
+  Redis: 'Adonis/Addons/Redis',
 };
 
 /*
