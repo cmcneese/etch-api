@@ -23,6 +23,9 @@ Route.resource('/api/users', 'UserController')
   .only(['index', 'show', 'update', 'destroy'])
   .middleware('auth');
 
+Route.resource('/api/tracks', 'TrackController')
+  .only(['index', 'show']);
+
 Route.post('/api/token-auth', 'SessionController.store');
 
 Route.resource('/api/memories', 'MemoryController').except(['create', 'edit']);
