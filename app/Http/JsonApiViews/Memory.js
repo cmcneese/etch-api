@@ -2,7 +2,7 @@ const JsonApiView = require('adonis-jsonapi/src/JsonApiView');
 
 class Memory extends JsonApiView {
   get attributes() {
-    return ['track_id', 'emoji', 'text', 'created_at'];
+    return ['track_id', 'emoji', 'text', 'created_at', 'lat', 'lng'];
   }
 
   user() {
