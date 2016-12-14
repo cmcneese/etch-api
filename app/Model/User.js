@@ -22,6 +22,7 @@ class User extends Lucid {
       'email',
       'password',
       'username',
+      'location',
       'name',
       'profile_pic_url',
       'profile_pic_extension',
