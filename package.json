@@ -33,6 +33,8 @@
     "adonis-middleware": "^1.0.8",
     "adonis-redis": "^1.0.1",
     "adonis-validation-provider": "^3.0.4",
+    "fetch": "^1.1.0",
+    "node": "^0.0.0",
     "pg": "^6.1.0",
     "snakecase-keys": "^1.1.0",
     "sqlite3": "^3.1.8",
