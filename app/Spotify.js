@@ -12,7 +12,11 @@ module.exports = class Spotify {
   * findAll() {
     const allIds = JSON.parse(yield this.Redis.get('spotify:all')) || [];
 
-    return yield allIds.map(id => this.find(id));
+    return yield this.findMany(allIds);
+  }
+
+  * findMany(ids) {
+    return yield ids.map(id => this.find(id));
   }
 
   * find(id) {
