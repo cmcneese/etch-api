@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -10,7 +10,7 @@
 |
 */
 
-const Env = use('Env')
+const Env = use('Env');
 
 module.exports = {
 
@@ -32,13 +32,13 @@ module.exports = {
   | Configuration for a named connection.
   |
   */
-  local: {
+  local: Env.get('REDIS_URL', {
     host: '127.0.0.1',
     port: 6379,
     password: null,
     db: 0,
-    keyPrefix: ''
-  },
+    keyPrefix: '',
+  }),
 
 
   /*
@@ -54,15 +54,15 @@ module.exports = {
       host: '127.0.0.1',
       port: 6379,
       password: null,
-      db: 0
+      db: 0,
     },
     {
       host: '127.0.0.1',
       port: 6380,
       password: null,
-      db: 0
-    }]
-  }
+      db: 0,
+    }],
+  },
 
 
-}
+};
