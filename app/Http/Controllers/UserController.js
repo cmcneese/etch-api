@@ -71,6 +71,7 @@ class UserController {
 
     if (profilePic && profilePic.exists()) {
       const attrs = snakeCaseKeys(request.all());
+      delete attrs.password;
 
       yield File.upload(profilePic.clientName(), profilePic);
 
@@ -89,9 +90,7 @@ class UserController {
     const foreignKeys = {
     };
 
-    if (!input.password) {
-      delete input.password;
-    }
+    delete input.password;
 
     user.fill(Object.assign({}, input, foreignKeys));
     yield user.save();
