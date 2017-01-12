@@ -29,3 +29,18 @@ Route.resource('/api/tracks', 'TrackController')
 Route.post('/api/token-auth', 'SessionController.store');
 
 Route.resource('/api/memories', 'MemoryController').except(['create', 'edit']);
+
+const File = use('File');
+const Env = use('Env');
+
+Route.get('/uploads/*', function* (request, response) {
+  const type = Env.get('FILE_DRIVER');
+
+  if (type === 's3') {
+    return response.redirect(`https://s3.amazonaws.com/${Env.get('S3_BUCKET')}/${request.param(0)}`);
+  }
+
+  const stream = File.getStream(request.param(0));
+
+  stream.pipe(response.response);
+});
