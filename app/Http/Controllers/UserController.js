@@ -15,7 +15,7 @@ class UserController {
     return {
       name: 'required',
       username: 'required',
-      email: 'required|email|unique:users',
+      email: 'required|email',
       password: 'required|confirmed',
     };
   }
