@@ -35,9 +35,9 @@
     "adonis-validation-provider": "^3.0.4",
     "node": "^10.13.0",
     "node-fetch": "^2.6.7",
-    "pg": "^6.1.0",
+    "pg": "^8.11.1",
     "snakecase-keys": "^1.1.0",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "^5.1.6",
     "underscore": "^1.12.1",
     "yarn": "^1.22.0",
     "youch": "^1.0.1"
@@ -49,11 +49,11 @@
     "chai": "^3.5.0",
     "cucumber": "^2.0.0-rc.1",
     "dot-object": "^1.5.4",
-    "eslint": "^6.6.0",
+    "eslint": "^8.44.0",
     "eslint-config-rtablada": "^4.0.0",
     "faker": "^3.1.0",
     "mocha": "^3.2.0",
     "node-fetch": "^2.6.7",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.19.4"
   }
 }
